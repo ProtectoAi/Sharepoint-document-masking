@@ -1,6 +1,6 @@
-#  SharePoint Word Document Masking Tool
+#  SharePoint Word Document Masking Script
 
-This Python tool downloads Word documents (`.docx`) from a specified SharePoint folder using Microsoft Graph API, processes each document to mask sensitive content asynchronously via a Mask API, and outputs the masked text while preserving paragraph structure. It also supports archiving or deleting processed files and logs its operations.
+This Python script downloads Word documents (`.docx`) from a specified SharePoint folder using Microsoft Graph API, processes each document to mask sensitive content asynchronously via a Mask API, and outputs the masked text while preserving paragraph structure. It also supports archiving or deleting processed files and logs its operations.
 
 ---
 
