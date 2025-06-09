@@ -1,0 +1,7 @@
+[protecto]
+BASE_URL = https://protecto-trial.protecto.ai/api/vault
+AUTH_KEY = your_protecto_auth_key_here
+CLIENT_ID = your_azure_ad_app_client_id_here
+CLIENT_SECRET = your_azure_ad_app_client_secret_here
+TENANT_ID = your_azure_ad_tenant_id_here
+SITE_URL = https://yourtenant.sharepoint.com/sites/YourSiteName
