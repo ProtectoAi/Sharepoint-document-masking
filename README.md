@@ -66,8 +66,7 @@ AUTH_KEY = your_protecto_auth_key
 CLIENT_ID = your_azure_ad_app_client_id
 CLIENT_SECRET = your_azure_ad_app_client_secret
 TENANT_ID = your_azure_ad_tenant_id
-USER_ID = target_user_principal_name_or_id
-SITE_URL = optional_sharepoint_site_url_if_needed
+SITE_URL = sharepoint_site_url
  
  ```
 
@@ -77,9 +76,7 @@ AUTH_KEY — Bearer token or API key for Protecto API authentication.
 
 CLIENT_ID, CLIENT_SECRET, TENANT_ID — Azure AD app credentials for Microsoft Graph authentication.
 
-USER_ID — User ID or email whose OneDrive folder is accessed.
-
-SITE_URL — Optional, not used in current script but reserved for SharePoint site if needed.
+SITE_URL — Sharepoint site URL.
 
  ## Usage
 
@@ -87,9 +84,9 @@ SITE_URL — Optional, not used in current script but reserved for SharePoint si
 
  ```bash
 
- python mask_word_onedrive.py \
+ python document_masking.py \
   --config_path config.ini \
-  --onedrive_folder "FolderNameInOneDrive" \
+  --sharepoint folder "FolderNameInSharepoint" \
   --local_download_dir "./downloads" \
   --output_dir "./masked_output" \
   [--log_file_path "./app.log"] \
@@ -101,7 +98,7 @@ SITE_URL — Optional, not used in current script but reserved for SharePoint si
 
 `--config_path (required)`: Path to the configuration file.
 
-`--onedrive_folder (required)`: Name of the OneDrive folder inside the root directory to download files from.
+`--sharepoint folder (required)`: Name of the Sharepoint folder inside the root directory to download files from.
 
 `--local_download_dir (required)`: Local directory where downloaded Word files will be saved.
 
@@ -117,7 +114,7 @@ SITE_URL — Optional, not used in current script but reserved for SharePoint si
 
 `Authentication`: The script uses Azure AD app credentials to obtain an access token for Microsoft Graph API.
 
-`File Listing & Download`: Lists all files in the specified OneDrive folder and downloads .docx files to a local directory.
+`File Listing & Download`: Lists all files in the specified Sharepoint folder and downloads .docx files to a local directory.
 
 `Paragraph Processing`: Loads each Word file and splits paragraphs into chunks if they exceed the word_limit.
 
@@ -157,7 +154,7 @@ Invalid or empty paragraphs are handled gracefully to preserve formatting.
 
 ## Notes
 
-Ensure your Azure AD app has proper delegated or application permissions for Microsoft Graph API to read OneDrive files.
+Ensure your Azure AD app has proper delegated or application permissions for Microsoft Graph API to read Sharepoint files.
 
 Protecto API endpoint URLs may need adjustment depending on your subscription or environment.
 

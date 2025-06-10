@@ -230,16 +230,23 @@ def main(config_path, sharepoint_folder, local_download_dir, output_dir, log_fil
             section = None
             for line in f:
                 line = line.strip()
+                if not line or line.startswith('#'):  # skip empty or commented lines
+                    continue
                 if line.startswith('[') and line.endswith(']'):
                     section = line[1:-1]
                     config[section] = {}
-                elif section and ':' in line:
-                    key, value = line.split(':', 1)
+                elif section:
+                    # Try both ':' and '=' as separators
+                    if ':' in line:
+                        key, value = line.split(':', 1)
+                    elif '=' in line:
+                        key, value = line.split('=', 1)
+                    else:
+                        continue  # Skip lines without valid key-value delimiter
                     config[section][key.strip().strip('"')] = value.strip().strip('"')
     except Exception as e:
         logger.error(f"Error reading config file: {e}")
         return
-
     if 'protecto' not in config:
         logger.error("Config missing 'protecto' section")
         return
